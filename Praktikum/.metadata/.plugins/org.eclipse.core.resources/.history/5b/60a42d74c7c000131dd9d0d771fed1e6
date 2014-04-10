@@ -61,8 +61,7 @@ public abstract class AudioFile {
 	public String getTitle() {
 		return title;
 	}
-	
-	// public methods
+
 	public String toString() {
 		// falls getAuthor() leerer String, nur Ausgabe Titel
 		if (author.isEmpty()) {
@@ -73,6 +72,7 @@ public abstract class AudioFile {
 		return ausgabe;
 	}
 
+	// public methods
 	public void parsePathname(String pathName) {
 		char sepchar = java.io.File.separatorChar;
 		String sepString = java.io.File.separator;

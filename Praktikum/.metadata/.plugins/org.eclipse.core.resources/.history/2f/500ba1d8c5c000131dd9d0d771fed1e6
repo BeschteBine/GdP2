@@ -1,0 +1,27 @@
+
+public class WavFile {
+
+	public WavFile(){
+		float frameRate = 0;
+		long numberOfFrames = 0L;
+	}
+//liefert die zur Audiodatei "Dateiname" gehörenden Daten
+	public static readParams(){
+		return;
+	}
+
+//Anzahl der Frames pro Sekunde	
+	public static getFrameRate(){
+		return frameRate;
+	}
+//Gesamtanzahl der Frames
+	public static getNumberOfFrames(){
+		returnnumberOfFrames;
+	}
+	
+	public static long computeDuration(long numberOfFrames, float frameRate){
+		
+	}
+	
+	
+}

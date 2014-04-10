@@ -24,7 +24,6 @@ public class WavFile  extends SampledFile{
 	
 	public static long computeDuration(long numberOfFrames, float frameRate){
 		
-		return 0L;
 	}
 	
 	

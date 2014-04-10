@@ -1,19 +1,14 @@
 
 abstract  class SampledFile extends AudioFile {
 
-	// attributes
-	protected String duration;
-	
-	// constructors
-	public SampledFile() {
-		super();
-	}
-	
 	public SampledFile(String s){
 		super(s);
 	}
 	
-	//public methods
+	public SampledFile() {
+		super();
+	}
+	
 	@Override
 	public void play() {
 		// TODO Auto-generated method stub

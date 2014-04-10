@@ -1,9 +1,6 @@
 
 abstract  class SampledFile extends AudioFile {
 
-	// attributes
-	protected String duration;
-	
 	// constructors
 	public SampledFile() {
 		super();

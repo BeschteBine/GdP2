@@ -1,19 +1,14 @@
 
-abstract  class SampledFile extends AudioFile {
+abstract  class SampledFile extends TaggedFile {
 
-	// attributes
-	protected String duration;
-	
-	// constructors
-	public SampledFile() {
-		super();
-	}
-	
 	public SampledFile(String s){
 		super(s);
 	}
 	
-	//public methods
+	public SampledFile() {
+		super();
+	}
+	
 	@Override
 	public void play() {
 		// TODO Auto-generated method stub
@@ -31,7 +26,6 @@ abstract  class SampledFile extends AudioFile {
 		// TODO Auto-generated method stub
 
 	}
-	
 
 	public String getFormattedDuration() {
 		long time = Long.parseLong(duration);
