@@ -10,29 +10,19 @@ public class TaggedFile extends SampledFile {
 	// constuctor
 	public TaggedFile() {
 		super();
+		album = "";
 	}
 
 	public TaggedFile(String s) {
 		super(s);
+		album = "";
+		readAndStoreTags(getPathname());
 	}
 
 	public String getAlbum() {
 		return album;
 	}
 
-	public String toString() {
-		String output = new String();
-
-		if (this.getAlbum().isEmpty()) {
-
-			output = super.toString() + "author" + "title" + "time";
-		} else {
-
-			output = super.toString() + "author" + "title" + "album" + "time";
-		}
-
-		return output;
-	}
 
 	public void readAndStoreTags(String pathname) {
 
@@ -44,30 +34,46 @@ public class TaggedFile extends SampledFile {
 
 			if (key.trim().isEmpty())
 				continue;
+			
+			if (tag_map.get(key).toString().trim().isEmpty())
+					continue;
 
 			if (key == "title") {
-				title = tag_map.get(key).toString();
+				title = tag_map.get(key).toString().trim();
 			}
 
 			else if (key == "author") {
-				author = tag_map.get(key).toString();
+				author = tag_map.get(key).toString().trim();
 			}
 
 			else if (key == "album") {
-				album = tag_map.get(key).toString();
+				album = tag_map.get(key).toString().trim();
 			}
 
 			else if (key == "duration") {
-				duration = tag_map.get(key).toString();
+				duration = Long.parseLong(tag_map.get(key).toString());
 			}
 
 		}
 	}
+	public String toString() {
+		String toutput = new String();
 
+		if (this.getAlbum().isEmpty()) {
+
+			toutput = super.toString() + " - " + getFormattedDuration();
+		} else {
+
+			toutput = super.toString() +  " - " + album +  " - " + getFormattedDuration();
+		}
+
+		return toutput;
+	}
 	@Override
 	public String[] fields() {
+		String[] fields = {author,title,album,this.getFormattedDuration()};
 		// TODO Auto-generated method stub
-		return null;
+		return fields;
 	}
 
 }

@@ -7,7 +7,6 @@ public abstract class AudioFile {
 	protected String filename;
 	protected String author;
 	protected String title;
-	protected String ausgabe;
 
 	// constructor
 	public AudioFile() {
@@ -61,16 +60,17 @@ public abstract class AudioFile {
 	public String getTitle() {
 		return title;
 	}
-	
+
 	// public methods
 	public String toString() {
+		String aoutput = new String();
 		// falls getAuthor() leerer String, nur Ausgabe Titel
 		if (author.isEmpty()) {
-			ausgabe = title;
+			aoutput = title;
 		} else {
-			ausgabe = author + " - " + title;
+			aoutput = author + " - " + title;
 		}
-		return ausgabe;
+		return aoutput;
 	}
 
 	public void parsePathname(String pathName) {
@@ -103,17 +103,17 @@ public abstract class AudioFile {
 		String cleanName = verkurzt.toString();
 
 		if (cleanName.endsWith(sepString)) {
-			// kein audiofile
+			// no audiofile
 			pathname = cleanName;
 			filename = "";
 		} else if (cleanName.contains(sepString)) {
-			// beides
+			// both
 			pathname = cleanName.substring(0,
 					cleanName.lastIndexOf(sepString) + 1);
 			filename = cleanName
 					.substring(cleanName.lastIndexOf(sepString) + 1);
 		} else {
-			// nur audiofile
+			// only audiofile
 			filename = cleanName;
 			pathname = "";
 		}
@@ -121,13 +121,13 @@ public abstract class AudioFile {
 
 	public void parseFilename(String fileName) {
 
-		// remove filetype
+		// remove filename
 		if (fileName.contains(".")) {
 			fileName = fileName.substring(0, fileName.lastIndexOf("."));
 		}
 
 		if (fileName.contains(" - ")) {
-			// author + titel
+			// author + title
 			author = fileName.substring(0, fileName.indexOf(" - ")).trim();
 			title = fileName.substring(fileName.indexOf(" - ") + 3).trim();
 		} else {

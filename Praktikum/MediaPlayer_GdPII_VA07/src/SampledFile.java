@@ -1,48 +1,51 @@
-
-abstract  class SampledFile extends AudioFile {
+abstract class SampledFile extends AudioFile {
 
 	// attributes
-	protected String duration;
-	
+	protected long duration;
+
 	// constructors
 	public SampledFile() {
 		super();
+		duration = 0L;
 	}
-	
-	public SampledFile(String s){
+
+	public SampledFile(String s) {
 		super(s);
+		duration = 0L;
 	}
-	
-	//public methods
+
+	// public methods
 	@Override
 	public void play() {
-		// TODO Auto-generated method stub
+		studiplayer.basic.BasicPlayer.play(getPathname());
 
 	}
 
 	@Override
 	public void togglePause() {
-		// TODO Auto-generated method stub
-
+		studiplayer.basic.BasicPlayer.togglePause();
 	}
 
 	@Override
 	public void stop() {
-		// TODO Auto-generated method stub
-
+		studiplayer.basic.BasicPlayer.stop();
 	}
-	
 
+	// setters
+	protected void setDuration(long l) {
+		duration = l;
+	}
+
+	// getters
 	public String getFormattedDuration() {
-		long time = Long.parseLong(duration);
-		return timeFormatter(time);
+		return TaggedFile.timeFormatter(this.duration);
 	}
 
 	public String getFormattedPosition() {
-		return timeFormatter(studiplayer.basic.BasicPlayer.getPosition()) ;
+		return TaggedFile.timeFormatter(studiplayer.basic.BasicPlayer.getPosition());
 	}
-	
-	public static String timeFormatter(long microtime){
+
+	public static String timeFormatter(long microtime) {
 		if (microtime < 0) {
 			throw new RuntimeException("Negative time value provided");
 		}
@@ -51,16 +54,12 @@ abstract  class SampledFile extends AudioFile {
 		}
 		// Umrechnung microsekunden in mm:ss
 
-		int minutes = (int) (microtime / 10000000) / 60;
-		int seconds = (int) (microtime / 10000000) % 60;
+		int minutes = (int) (microtime / 1000000) / 60;
+		int seconds = (int) (microtime / 1000000) % 60;
 
-		// if (){
+		String duration = String.format("%02d:%02d", minutes, seconds);
 
-		// }
-
-		String time = String.format("02%d:02%d", minutes, seconds);
-
-		return time;
+		return duration;
 	}
-	
-}//end
+
+}// end

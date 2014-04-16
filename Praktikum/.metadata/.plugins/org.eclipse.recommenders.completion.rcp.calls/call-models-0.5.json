@@ -1,0 +1,17 @@
+{
+  "/home/lars/workspace/GdP2/Praktikum/MediaPlayer_GdPII_VA07/src": {
+    "location": "/home/lars/workspace/GdP2/Praktikum/MediaPlayer_GdPII_VA07/src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027/home/lars/workspace/GdP2/Praktikum/MediaPlayer_GdPII_VA07/src\u0027. Skipped."
+  },
+  "/home/lars/workspace/GdP2/Praktikum/MediaPlayer_GdPII_VA07/lib/studiplayer 12.06.40.jar": {
+    "location": "/home/lars/workspace/GdP2/Praktikum/MediaPlayer_GdPII_VA07/lib/studiplayer 12.06.40.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027/home/lars/workspace/GdP2/Praktikum/MediaPlayer_GdPII_VA07/lib/studiplayer 12.06.40.jar\u0027. Neither fingerprint \u0027640fac8e56490da5610683c8a2116e7d2e000564\u0027 nor symbolic name \u0027studiplayer 12.06.40\u0027 are known."
+  },
+  "/usr/lib/jvm/java-7-oracle/jre/lib/rt.jar": {
+    "location": "/usr/lib/jvm/java-7-oracle/jre/lib/rt.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027/usr/lib/jvm/java-7-oracle/jre/lib/rt.jar\u0027. Neither fingerprint \u002741c6eef0644c6286fe527ef5efd0d61ce867a278\u0027 nor symbolic name \u0027jre\u0027 are known."
+  }
+}

@@ -1,0 +1,36 @@
+public class WavFile extends SampledFile {
+
+	// constructors
+	public WavFile() {
+		super();
+	}
+
+	public WavFile(String s) {
+		super(s);
+	}
+//attributes
+	public long ct;
+			
+	public void readAndSetDurationFromFile(String pathname){
+		//liest Werte für Gesamtanzahl der Frames und Frame Rate,
+		//der AudioDatei(pathname)mit Methoden aus class WavParamReader
+		// und speichert in Attribut
+	
+		
+	}
+
+	public String toString() {
+		return "";
+	}
+
+	public String[] fields() {
+		return null;
+	}
+
+	public static long computeDuration(long numberOfFrames, float frameRate) {
+		
+	//float mt = Float.parseFloat(numberOfFrames); 
+		// Gesamtanzahl Frames / Frame Rate = Gesamtspieldauer in microseconds
+		return (long) (numberOfFrames / frameRate) * 100000;
+	}
+}

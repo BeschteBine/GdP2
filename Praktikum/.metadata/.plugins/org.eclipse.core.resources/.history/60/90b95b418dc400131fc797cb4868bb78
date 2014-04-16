@@ -1,0 +1,67 @@
+abstract class SampledFile extends AudioFile {
+
+	// attributes
+	protected long duration;
+
+	// constructors
+	public SampledFile() {
+		super();
+	}
+
+	public SampledFile(String s) {
+		super(s);
+	}
+	
+	// public methods
+		@Override
+		public void play() {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void togglePause() {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void stop() {
+			// TODO Auto-generated method stub
+
+		}
+		
+	// setters
+	protected void setDuration(long l) {
+		duration = l;
+	}
+	
+	// getters
+	public String getFormattedDuration() {
+		return timeFormatter(this.duration);
+	}
+
+	public String getFormattedPosition() {
+		return timeFormatter(studiplayer.basic.BasicPlayer.getPosition());
+	}
+
+	
+
+	public static String timeFormatter(long microtime) {
+		if (microtime < 1000000) {
+			throw new RuntimeException("Negative time value provided");
+		}
+		if (microtime > 5999999999L) {
+			throw new RuntimeException("Time value exceeds allowed format");
+		}
+		// Umrechnung microsekunden in mm:ss
+
+		int minutes = (int) (microtime / 10000000) / 60;
+		int seconds = (int) (microtime / 10000000) % 60;
+
+		String time = String.format("%02d:%02d", minutes, seconds);
+
+		return time;
+	}
+
+}// end
