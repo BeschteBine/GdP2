@@ -1,0 +1,180 @@
+package studiplayer.ui;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+
+import studiplayer.audio.AudioFile;
+import studiplayer.audio.PlayList;
+
+@SuppressWarnings("serial")
+public class Player extends JFrame implements ActionListener {
+
+	public PlayList playlist = null;
+
+	public static String DEFAULT_PLAYLIST = "playlists/DefaultPlayList.m3u";
+	public static PlayList pL;
+
+	public String nocurrentSong = "no current song";
+	public String noPlayList = "empty play list";
+	public String noTime = "--:--";
+
+	public String begin = "00:00";
+	public String praefix = "Current song:";
+
+	JLabel songDescription = new JLabel(nocurrentSong);
+	JLabel playTime = new JLabel(noTime);
+
+	private boolean stopped;
+
+	public Player(PlayList pL) {
+		// Initialize the main frame
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// Create GUI components
+
+		// Create a panel for the buttons
+		JPanel buttons = new JPanel();
+
+		// Create the buttons
+		JButton bplay = new JButton(new ImageIcon("icons/play.png"));
+		bplay.setActionCommand("AC_PLAY");
+		bplay.addActionListener(this);
+		buttons.add(bplay);
+
+		JButton bpause = new JButton(new ImageIcon("icons/pause.png"));
+		bpause.setActionCommand("AC_PAUSE");
+		bpause.addActionListener(this);
+		buttons.add(bpause);
+
+		JButton bstop = new JButton(new ImageIcon("icons/stop.png"));
+		bstop.setActionCommand("AC_STOP");
+		bstop.addActionListener(this);
+		buttons.add(bstop);
+
+		JButton bnext = new JButton(new ImageIcon("icons/next.png"));
+		bnext.setActionCommand("AC_NEXT");
+		bnext.addActionListener(this);
+		buttons.add(bnext);
+
+		JButton bpleditor = new JButton(new ImageIcon("icons/pl_editor.png"));
+		bpleditor.setActionCommand("AC_PL_EDITOR");
+		bpleditor.addActionListener(this);
+		buttons.add(bpleditor);
+
+		// Labels
+
+		// Add components to frame
+		this.add(songDescription, BorderLayout.NORTH);
+		this.add(playTime, BorderLayout.WEST);
+		this.add(buttons, BorderLayout.CENTER);
+
+		// Activate GUI
+		this.pack();
+		this.setVisible(true);
+
+	}
+
+	public void updateSongInfo(AudioFile af) {
+		if (af == null) {
+			songDescription.setText(noTime);
+			songDescription.setText(nocurrentSong);
+		} else {
+			songDescription.setText(praefix + af.toString());
+
+		}
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		AudioFile af;
+		String cmd = e.getActionCommand();
+
+		if (cmd.equals("AC_PlAY")) {
+			af = pL.getCurrentAudioFile();
+			System.out.println("Playing" + af.toString());
+			System.out.println("Filename is" + af.getFilename());
+			System.out.println("Current index is" + pL.getCurrent());
+
+		} else if (cmd.equals("AC_PAUSE")) {
+			af = pL.getCurrentAudioFile();
+			System.out.println("Pausing" + af.toString());
+			System.out.println("Filename is" + af.getFilename());
+			System.out.println("Current index is" + pL.getCurrent());
+
+		} else if (cmd.equals("AC_STOP")) {
+			stopCurrentSong();
+			System.out.println("");
+			// af = pL.getCurrentAudioFile();
+			// System.out.println("Stopping" + af.toString());
+			// System.out.println("Filename is" + af.getFilename());
+			// System.out.println("Current index is" + pL.getCurrent());
+
+		} else if (cmd.equals("AC_NEXT")) {
+			// pL.changeCurrent();
+			// af = pL.getCurrentAudioFile();
+			// System.out.println("Switching" + af.toString());
+			// System.out.println("Filename is" + af.getFilename());
+			// System.out.println("Current index is" + pL.getCurrent());
+			System.out.println("Switching to next audio file");
+			if (!stopped) {
+				// We are playing
+				// Stiop playing the last Song
+				stopCurrentSong();
+			}
+			// now, we are stopped and not playing
+			// Move on to the next song in the playlist
+			pL.changeCurrent();
+			// Play the next Song
+			// For Info: Get the current song from the list
+			af = pL.getCurrentAudioFile();
+			if (af != null) {
+				System.out.println("Switched to next audio file");
+			} else {
+				System.out.println("PlayList is empty");
+			}
+			System.out.println("");
+
+		} else if (cmd.equals("AC_EDITOR")) {
+
+		}
+
+	}
+
+	private void playCurrentSong() {
+
+	}
+
+	private void stopCurrentSong() {
+
+	}
+
+	public static void main(String[] args) {
+
+		PlayList pL = null;
+
+		if (args.length >= 2) {
+			pL = new PlayList(args[1].toString());
+
+		} else {
+			pL = new PlayList(DEFAULT_PLAYLIST);
+		}
+
+		new Player(pL);
+
+	}
+
+}

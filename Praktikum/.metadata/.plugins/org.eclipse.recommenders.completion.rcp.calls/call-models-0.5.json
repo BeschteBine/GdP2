@@ -1,0 +1,12 @@
+{
+  "/usr/lib/jvm/java-7-oracle/jre/lib/rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "/usr/lib/jvm/java-7-oracle/jre/lib/rt.jar",
+    "status": "RESOLVED"
+  },
+  "/home/lars/workspace/GdP2/Praktikum/MediaPlayer_GdPII_VA10/src": {
+    "location": "/home/lars/workspace/GdP2/Praktikum/MediaPlayer_GdPII_VA10/src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027/home/lars/workspace/GdP2/Praktikum/MediaPlayer_GdPII_VA10/src\u0027. Skipped."
+  }
+}

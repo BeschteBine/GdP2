@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.swing.UIManager"/>
+<fullyQualifiedTypeName name="java.awt.Event"/>
+<fullyQualifiedTypeName name="studiplayer.audio.PlayList"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="studiplayer.audio.AudioFile"/>
+<fullyQualifiedTypeName name="studiplayer.audio.NotPlayableException"/>
+</qualifiedTypeNameHistroy>
